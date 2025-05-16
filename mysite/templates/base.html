@@ -1,0 +1,43 @@
+{% load static %}
+<html lang="ru">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'animals/css/animals.css' %}">
+{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приют "Верный друг" | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'homepage/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="{% static 'homepage/images/logo.png' %}" alt="Логотип приюта" class="logo">
+            <nav>
+                <ul class="main-menu">
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href="{% url 'animal_list' %}">Наши питомцы</a></li>
+    <li><a href="{% url 'about' %}">О приюте</a></li>
+</ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block hero %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Правила посещения</a>
+            <a href="#">Как помочь</a>
+        </div>
+        <p>© 2025 Приют "Верный друг". Все права защищены.</p>
+        <p>{% now "d.m.Y" %}</p>
+    </footer>
+</body>
+</html>

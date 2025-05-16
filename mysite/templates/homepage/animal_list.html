@@ -1,0 +1,8 @@
+<ul class="animal-list">
+    {% for animal in animals %}
+        <li>
+            <strong>{{ animal.name }}</strong> —
+            {{ animal.type }}, {{ animal.age }} года
+        </li>
+    {% endfor %}
+</ul>

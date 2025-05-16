@@ -1,0 +1,93 @@
+/* Основные стили для страницы животных */
+.animals-section {
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.animals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.animal-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.animal-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.animal-info {
+    padding: 1.5rem;
+}
+
+.animal-info h3 {
+    color: #1e5128;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.animal-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Стили статусов */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* В приюте */
+.status-in-shelter {
+    background-color: #FFEB3B;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(255, 235, 59, 0.3);
+}
+
+/* Пристроен */
+.status-adopted {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .animals-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .animals-grid {
+        grid-template-columns: 1fr;
+    }
+}

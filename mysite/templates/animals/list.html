@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="animals-section">
+    <div class="container">
+        <h1>Наши питомцы</h1>
+
+        <div class="animals-grid">
+            {% for animal in animals %}
+            <div class="animal-card">
+                <img
+                    src="{% if animal.photo %}/media/{{ animal.photo.name }}{% else %}/media/animals/default.jpg{% endif %}"
+                    alt="{{ animal.name }}"
+                    class="animal-image"
+                    onerror="this.src='/media/animals/default.jpg'"
+                >
+                <div class="animal-info">
+                    <h3>{{ animal.name }}</h3>
+                    <div class="animal-meta">
+                        <span>Порода: {{ animal.breed }}</span>
+                        <span>Возраст: {{ animal.age }}</span>
+                    </div>
+                    <p class="status-{{ animal.status }}">
+                        {{ animal.get_status_display }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

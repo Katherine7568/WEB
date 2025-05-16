@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Наши питомцы{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>Наши подопечные</h2>
+    <div class="filter-options">
+        <button class="filter-btn active">Все</button>
+        <button class="filter-btn">Кошки</button>
+        <button class="filter-btn">Собаки</button>
+    </div>
+
+    <div class="animals-grid">
+        {% for animal in animals %}  <!-- Исправлено: перебираем список animals -->
+        <div class="animal-card">  <!-- Добавлен контейнер для карточки -->
+            {% if animal.photo %}
+                <img src="{{ animal.photo.url }}" alt="{{ animal.name }}" class="animal-image">
+            {% endif %}
+            <div class="animal-info">
+                <h3>{{ animal.name }}</h3>
+                <div class="animal-meta">
+                    <span>{{ animal.breed }}</span>
+                    <span>{{ animal.age }} года</span>
+                </div>
+                <p>{{ animal.description|truncatewords:15 }}</p>
+                <a href="{{ animal.get_absolute_url }}" class="btn">Подробнее</a>  <!-- Добавлена ссылка -->
+            </div>
+        </div>
+        {% empty %}  <!-- Выводим, если список пуст -->
+        <p>Питомцев пока нет в базе данных.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
