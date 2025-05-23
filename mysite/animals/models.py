@@ -5,6 +5,8 @@ from django.urls import reverse
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Animal.Status.ADOPTED)
+    
+
 class Animal(models.Model):
     class Status(models.IntegerChoices):
         IN_SHELTER = 0, 'В приюте'
@@ -16,11 +18,10 @@ class Animal(models.Model):
     age = models.PositiveSmallIntegerField(verbose_name="Возраст")
     description = models.TextField(verbose_name="Описание", blank=True)
     photo = models.ImageField(
-        upload_to='animals/',
         blank=True,
         null=True,
         verbose_name="Фотография",
-        default='animals/default.jpg'
+        default='animals/image.png'
     )
     status = models.IntegerField(choices=Status.choices, default=Status.IN_SHELTER, verbose_name="Статус")
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата поступления")

@@ -1,3 +1,40 @@
-<h1>{{ animal.name }}</h1>
-<p>Порода: {{ animal.breed }}</p>
-<p>Slug: {{ animal.slug }}</p>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ animal.name }}{% endblock %}
+{% block content %}
+<section class="container">
+    <div class="animal-detail">
+        <div class="animal-photo">
+            {% if animal.photo %}
+            <img
+            src="{% static 'animals/images/' %}{{ animal.photo }}"
+            alt="{{ animal.name }}"
+            class="animal-image"
+        />
+        {% else %}
+        <img
+          src="{% static 'animals/images/image.png' %}"
+          alt="{{ animal.name }}"
+          class="animal-image"
+        />
+        {% endif %}
+        </div>
+        <div class="animal-info">
+            <h1>{{ animal.name }}</h1>
+            <div class="animal-meta">
+                <p><strong>Порода:</strong> {{ animal.breed }}</p>
+                <p><strong>Возраст:</strong> {{ animal.age }} года</p>
+                <p><strong>Статус:</strong> {{ animal.get_status_display }}</p>
+            </div>
+            <div class="animal-description">
+                <h2>О питомце</h2>
+                <p>{{ animal.description }}</p>
+            </div>
+            <div class="animal-actions">
+                <a href="{% url 'animals' %}" class="btn">Назад к списку</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

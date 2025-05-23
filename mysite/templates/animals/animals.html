@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Наши питомцы{%endblock %} 
+{% block content %}
+<section class="animals-section">
+  <div class="container">
+    <h1>Наши питомцы</h1>
+
+    <div class="animals-grid">
+      {% for animal in animals %}
+      <div class="animal-card">
+        {% if animal.photo %}
+        <img
+          src="{% static 'animals/images/' %}{{ animal.photo }}"
+          alt="{{ animal.name }}"
+          class="animal-image"
+        />
+        {% else %}
+        <img
+          src="{% static 'animals/images/image.png' %}"
+          alt="{{ animal.name }}"
+          class="animal-image"
+        />
+        {% endif %}
+        <div class="animal-info">
+          <h3>{{ animal.name }}</h3>
+          <div class="animal-meta">
+            <p>Порода: {{ animal.breed }}</p>
+            <p>Возраст: {{ animal.age }}</p>
+          </div>
+          <p class="status status-{{ animal.status }}">
+            {{ animal.get_status_display }}
+          </p>
+          <p><a href="{{ animal.get_absolute_url }}">Подробно</a></p>
+        </div>
+      </div>
+      {% empty %}
+      <p>Питомцев пока нет в базе данных.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

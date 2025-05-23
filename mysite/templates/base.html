@@ -1,30 +1,29 @@
+<!DOCTYPE html>
 {% load static %}
 <html lang="ru">
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'animals/css/animals.css' %}">
-{% endblock %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приют "Верный друг" | {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'homepage/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'animals/css/animals.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header-container">
-            <img src="{% static 'homepage/images/logo.png' %}" alt="Логотип приюта" class="logo">
+            <img src="{% static 'animals\images\logo (1).png' %}" alt="Логотип приюта" class="logo">
             <nav>
                 <ul class="main-menu">
-    <li><a href="{% url 'home' %}">Главная</a></li>
-    <li><a href="{% url 'animal_list' %}">Наши питомцы</a></li>
-    <li><a href="{% url 'about' %}">О приюте</a></li>
-</ul>
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'animals' %}">Наши питомцы</a></li>
+                    <li><a href="{% url 'about' %}">О приюте</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    {% block hero %}{% endblock %}
+    {% block hero %}
+    {% endblock %}
 
     <main>
         {% block content %}{% endblock %}
